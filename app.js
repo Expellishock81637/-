@@ -2,7 +2,6 @@
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const cors = require('cors');
 const express = require('express');
 const app = express();
 
@@ -12,7 +11,6 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
 // 引入Router (routes目錄底下的todo.js)
 const studentsRouter = require('./routes/students');
 app.use('/students', studentsRouter);
