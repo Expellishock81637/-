@@ -92,7 +92,6 @@ function saveDailyCalories() {
             food_fats: selectedFoodData.fats*modify,
             food_calories: selectedFoodData.calories*modify,
         };
-        console.log(formData)
         // Use $.post to send the form data to the server
         $.post('/students', formData, function (response) {
             if (response) {
