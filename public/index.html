@@ -1,0 +1,65 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>學生資訊管理系統</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .row {
+            margin-bottom: 20px;
+        }
+        .label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    </style>  
+</head>
+
+<body>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="index.js"></script>
+    <form id="add-food">
+        <div class="container">
+            <div class="row">
+                <div class="label">日期</div>
+                <input type="date" id="calendar-date">
+            </div>
+            <div class="row">
+                <div class="label">食物分類</div>
+                <select id="food-category" onchange="populateFoods()"></select>
+            </div>
+            <div class="row">
+                <div class="label">搜尋食物</div>
+                <input type="text" id="search-term" list="food-options" placeholder="輸入食物名稱" oninput="searchJSON()">
+                <datalist id="food-options"></datalist>
+            </div>
+            <div class="row">
+                <div class="label">食物重量(g)</div>
+                <input type="number" id="food-weight">
+            </div>
+            <div class="row">
+                <!-- Change the button to a submit button -->
+                <button type="submit">儲存</button>
+                <button onclick="deleteDataForSelectedDate()">刪除當日數據</button>
+            </div>
+        </div>
+    </form>
+    <div id="search-results"></div>
+</body></html>
