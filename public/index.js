@@ -124,6 +124,7 @@ async function displayFoodsForSelectedDate(selectedDate) {
         // Fetch all foods from the server
         $.get('/students', function (allfoods) {
             const foodsForSelectedDate = allfoods.filter(food => food.Date === selectedDate);
+            const result = document.getElementById('search-results');
             const tablebody = document.querySelector('data-output');
 
 
@@ -190,9 +191,9 @@ async function displayFoodsForSelectedDate(selectedDate) {
                 tablebody.appendChild(rrow);
 
             } else{
-                const noDataMessage = document.createElement('tr');
+                const noDataMessage = document.createElement('div');
                 noDataMessage.textContent = 'No foods recorded for the selected date.';
-                tablebody.appendChild(noDataMessage);
+                result.appendChild(noDataMessage);
             }
         });
     } catch (error) {
