@@ -125,33 +125,75 @@ async function displayFoodsForSelectedDate(selectedDate) {
         // Fetch all foods from the server
         $.get('/students', function (allfoods) {
             const foodsForSelectedDate = allfoods.filter(food => food.Date === selectedDate);
-            const resultsContainer = document.getElementById('search-results');
-            resultsContainer.innerHTML = '';
+            const resultsContainer = document.getElementById('#search-results');
 
-            if (foodsForSelectedDate.length > 0) {
-                const header = document.createElement('div');
-                header.textContent = `Foods for ${selectedDate}`;
-                resultsContainer.appendChild(header);
-
-                const list = document.createElement('ul');
+            if (foodsForSelectedDate.length > 0) {            
+                const tableBody = document.querySelector('#data');
+                tableBody.innerHTML = '';  // Clear existing rows
+            
                 let totalCalories = 0;
                 let totalProtein = 0;
                 let totalCarbs = 0;
                 let totalFats = 0;
+            
                 foodsForSelectedDate.forEach(food => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `${food.foodname} protein ${food.food_protein}g carbs ${food.food_carbs}g fats ${food.food_fats}g - ${food.food_calories} Calories`;
-                    list.appendChild(listItem);
+                    const row = document.createElement('tr');
+
+                    const foodNameCell = document.createElement('td');
+                    foodNameCell.textContent = food.foodname;
+                    row.appendChild(foodNameCell);
+
+                    const calorieCell = document.createElement('td');
+                    calorieCell.textContent = `${food.food_calories} Calories`;
+                    row.appendChild(calorieCell);
+
+                    const proteinCell = document.createElement('td');
+                    proteinCell.textContent = `${food.food_protein}g`;
+                    row.appendChild(proteinCell);
+            
+                    const carbCell = document.createElement('td');
+                    carbCell.textContent = `${food.food_carbs}g`;
+                    row.appendChild(carbCell);
+            
+                    const fatCell = document.createElement('td');
+                    fatCell.textContent = `${food.food_fats}g`;
+                    row.appendChild(fatCell);
+
+                    tableBody.appendChild(row);
+            
+                    // Sum up the total values
                     totalCalories += parseFloat(food.food_calories);
                     totalProtein += parseFloat(food.food_protein);
                     totalFats += parseFloat(food.food_fats);
-                    totalCarbs += parseFloat(food.food_carbs)
+                    totalCarbs += parseFloat(food.food_carbs);
                 });
-                const totalContainer = document.createElement('div');
-                totalContainer.textContent = `Total Protein: ${totalProtein.toFixed(2)} Total Carbs: ${totalCarbs.toFixed(2)} Total Fats: ${totalFats.toFixed(2)}  Total Calories: ${totalCalories.toFixed(2)}`;
-                resultsContainer.appendChild(list);
-                resultsContainer.appendChild(totalContainer);
+
+                const rrow = document.createElement('tr');
+
+                const total = document.createElement('td');
+                total.textContent = "Total";
+                rrow.appendChild(total);
+
+                const tcalorieCell = document.createElement('td');
+                tcalorieCell.textContent = `${totalCalories}Calories`;
+                rrow.appendChild(tcalorieCell);
+
+                const tproteinCell = document.createElement('td');
+                tproteinCell.textContent = `${totalProtein}g`;
+                rrow.appendChild(tproteinCell);
+            
+                const tcarbCell = document.createElement('td');
+                tcarbCell.textContent = `${totalCarbs}g`;
+                rrow.appendChild(tcarbCell);
+            
+                const tfatCell = document.createElement('td');
+                tfatCell.textContent = `${totalFats}g`;
+                rrow.appendChild(tfatCell);
+
+                tableBody.appendChild(rrow);
+
             } else {
+                tableBody.innerHTML = '';
                 const noDataMessage = document.createElement('div');
                 noDataMessage.textContent = 'No foods recorded for the selected date.';
                 resultsContainer.appendChild(noDataMessage);
