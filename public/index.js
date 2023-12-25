@@ -126,7 +126,7 @@ async function displayFoodsForSelectedDate(selectedDate) {
             const foodsForSelectedDate = allfoods.filter(food => food.Date === selectedDate);
             const result = document.getElementById('search-results');
             const result1 = document.getElementById('food');
-            const result2 = document.getElementById('caloie');
+            const result2 = document.getElementById('calorie');
             const result3 = document.getElementById('protein');
             const result4 = document.getElementById('carb');
             const result5 = document.getElementById('fat');
