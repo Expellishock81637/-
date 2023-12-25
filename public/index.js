@@ -125,17 +125,7 @@ async function displayFoodsForSelectedDate(selectedDate) {
         $.get('/students', function (allfoods) {
             const foodsForSelectedDate = allfoods.filter(food => food.Date === selectedDate);
             const result = document.getElementById('search-results');
-            const result1 = document.getElementById('food');
-            const result2 = document.getElementById('calorie');
-            const result3 = document.getElementById('protein');
-            const result4 = document.getElementById('carb');
-            const result5 = document.getElementById('fat');
             result.innerHTML = '';
-            result1.innerHTML = '';
-            result2.innerHTML = '';
-            result3.innerHTML = '';
-            result4.innerHTML = '';
-            result5.innerHTML = '';
 
             if (foodsForSelectedDate.length > 0) {
                 let totalCalories = 0;
@@ -144,25 +134,14 @@ async function displayFoodsForSelectedDate(selectedDate) {
                 let totalFats = 0;
             
                 foodsForSelectedDate.forEach(food => {
-                    const foodNameCell = document.createElement('td');
-                    foodNameCell.textContent = food.foodname+'<br>';
-                    result1.appendChild(foodNameCell);
-
-                    const calorieCell = document.createElement('td');
-                    calorieCell.textContent = `${food.food_calories} Calories<br>`;
-                    result2.appendChild(calorieCell);
-
-                    const proteinCell = document.createElement('td');
-                    proteinCell.textContent = `${food.food_protein}g<br>`;
-                    result3.appendChild(proteinCell);
-            
-                    const carbCell = document.createElement('td');
-                    carbCell.textContent = `${food.food_carbs}g<br>`;
-                    result4.appendChild(carbCell);
-            
-                    const fatCell = document.createElement('td');
-                    fatCell.textContent = `${food.food_fats}g<br>`;
-                    result5.appendChild(fatCell);
+                    let row = `<tr>
+							<td>${food.foodname}</td>
+							<td>${food.food_calories}</td>
+							<td>${food.food_protein}</td>
+                            <td>${food.food_carbs}</td>
+                            <td>${food.food_fats}</td>
+					  </tr>`
+			        result.innerHTML += row;
             
                     // Sum up the total values
                     totalCalories += parseFloat(food.food_calories);
@@ -171,25 +150,15 @@ async function displayFoodsForSelectedDate(selectedDate) {
                     totalCarbs += parseFloat(food.food_carbs);
                 });
 
-                const total = document.createElement('td');
-                total.textContent = "Total<br>";
-                result1.appendChild(total);
+                let rrow = `<tr>
+                    <td>Total</td>
+                    <td>${totalCalories}</td>
+                    <td>${totalProtein}</td>
+                    <td>${totalCarbs}</td>
+                    <td>${totalFats}</td>
+                </tr>`
 
-                const tcalorieCell = document.createElement('td');
-                tcalorieCell.textContent = `${totalCalories}Calories<br>`;
-                result2.appendChild(tcalorieCell);
-
-                const tproteinCell = document.createElement('td');
-                tproteinCell.textContent = `${totalProtein}g<br>`;
-                result3.appendChild(tproteinCell);
-            
-                const tcarbCell = document.createElement('td');
-                tcarbCell.textContent = `${totalCarbs}g<br>`;
-                result4.appendChild(tcarbCell);
-            
-                const tfatCell = document.createElement('td');
-                tfatCell.textContent = `${totalFats}g<br>`;
-                result5.appendChild(tfatCell);
+                result.innerHTML += rrow;
 
             } else{
                 const noDataMessage = document.createElement('div');
