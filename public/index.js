@@ -199,7 +199,6 @@ async function displayFoodsForSelectedDate(selectedDate) {
                 result.appendChild(noDataMessage);
             }
             
-            tablebody.appendChild(result);
         });
     } catch (error) {
         console.error('Error fetching or displaying foods:', error);
