@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function loadJSON() {
     // Fetch JSON data and populate categories
-    fetch('food_nutrition_1.json') // Assuming your server is running locally
+    fetch('food_nutrition.json') // Assuming your server is running locally
         .then(response => response.json())
         .then(data => {
             // Ensure that data and data.foods are defined
