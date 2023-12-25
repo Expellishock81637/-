@@ -128,7 +128,7 @@ async function displayFoodsForSelectedDate(selectedDate) {
             resultsContainer.innerHTML = '';
 
             if (foodsForSelectedDate.length > 0) {
-                const tablebody = document.getElementById('data-output');
+                const tablebody = document.querySelector('data-output');
                 let totalCalories = 0;
                 let totalProtein = 0;
                 let totalCarbs = 0;
@@ -191,9 +191,9 @@ async function displayFoodsForSelectedDate(selectedDate) {
                 tablebody.appendChild(rrow);
 
             } else{
-                const noDataMessage = document.createElement('div');
+                const noDataMessage = document.createElement('tr');
                 noDataMessage.textContent = 'No foods recorded for the selected date.';
-                resultsContainer.appendChild(noDataMessage);
+                tablebody.appendChild(noDataMessage);
             }
         });
     } catch (error) {
