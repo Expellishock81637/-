@@ -163,8 +163,6 @@ async function displayFoodsForSelectedDate(selectedDate) {
                     const fatCell = document.createElement('td');
                     fatCell.textContent = `${food.food_fats}g`;
                     result5.appendChild(fatCell);
-
-                    result.appendChild(row);
             
                     // Sum up the total values
                     totalCalories += parseFloat(food.food_calories);
