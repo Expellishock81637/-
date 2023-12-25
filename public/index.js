@@ -125,8 +125,7 @@ async function displayFoodsForSelectedDate(selectedDate) {
         $.get('/students', function (allfoods) {
             const foodsForSelectedDate = allfoods.filter(food => food.Date === selectedDate);
             const result = document.getElementById('search-results');
-            const tablebody = document.querySelector('data-output');
-
+            result.innerHTML = '';
 
             if (foodsForSelectedDate.length > 0) {
                 let totalCalories = 0;
@@ -157,7 +156,7 @@ async function displayFoodsForSelectedDate(selectedDate) {
                     fatCell.textContent = `${food.food_fats}g`;
                     row.appendChild(fatCell);
 
-                    tablebody.appendChild(row);
+                    result.appendChild(row);
             
                     // Sum up the total values
                     totalCalories += parseFloat(food.food_calories);
@@ -188,7 +187,7 @@ async function displayFoodsForSelectedDate(selectedDate) {
                 tfatCell.textContent = `${totalFats}g`;
                 rrow.appendChild(tfatCell);
 
-                tablebody.appendChild(rrow);
+                result.appendChild(rrow);
 
             } else{
                 const noDataMessage = document.createElement('div');
