@@ -124,10 +124,10 @@ async function displayFoodsForSelectedDate(selectedDate) {
         // Fetch all foods from the server
         $.get('/students', function (allfoods) {
             const foodsForSelectedDate = allfoods.filter(food => food.Date === selectedDate);
-            const resultsContainer = document.getElementById('search-results');
+            const tablebody = document.querySelector('data-output');
+            tablebody.innerHTML = '';
 
             if (foodsForSelectedDate.length > 0) {
-                const tablebody = document.querySelector('data-output');
                 let totalCalories = 0;
                 let totalProtein = 0;
                 let totalCarbs = 0;
