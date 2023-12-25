@@ -125,7 +125,7 @@ async function displayFoodsForSelectedDate(selectedDate) {
         $.get('/students', function (allfoods) {
             const foodsForSelectedDate = allfoods.filter(food => food.Date === selectedDate);
             const tablebody = document.querySelector('data-output');
-            tablebody.innerHTML = '';
+
 
             if (foodsForSelectedDate.length > 0) {
                 let totalCalories = 0;
