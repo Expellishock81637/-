@@ -124,6 +124,7 @@ async function displayFoodsForSelectedDate(selectedDate) {
         // Fetch all foods from the server
         $.get('/students', function (allfoods) {
             const foodsForSelectedDate = allfoods.filter(food => food.Date === selectedDate);
+            const tablebody = document.getElementById('data-output');
             const result = document.getElementById('search-results');
             result.innerHTML = '';
 
@@ -194,6 +195,8 @@ async function displayFoodsForSelectedDate(selectedDate) {
                 noDataMessage.textContent = 'No foods recorded for the selected date.';
                 result.appendChild(noDataMessage);
             }
+            
+            tablebody.appendChild(result);
         });
     } catch (error) {
         console.error('Error fetching or displaying foods:', error);
