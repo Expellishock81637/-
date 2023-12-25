@@ -128,7 +128,7 @@ async function displayFoodsForSelectedDate(selectedDate) {
             resultsContainer.innerHTML = '';
 
             if (foodsForSelectedDate.length > 0) {
-                const tablebody = document.createElement('data-output');
+                const tablebody = document.getElementById('data-output');
                 let totalCalories = 0;
                 let totalProtein = 0;
                 let totalCarbs = 0;
