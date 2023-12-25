@@ -145,23 +145,23 @@ async function displayFoodsForSelectedDate(selectedDate) {
             
                 foodsForSelectedDate.forEach(food => {
                     const foodNameCell = document.createElement('td');
-                    foodNameCell.textContent = food.foodname;
+                    foodNameCell.textContent = food.foodname+'<br>';
                     result1.appendChild(foodNameCell);
 
                     const calorieCell = document.createElement('td');
-                    calorieCell.textContent = `${food.food_calories} Calories`;
+                    calorieCell.textContent = `${food.food_calories} Calories<br>`;
                     result2.appendChild(calorieCell);
 
                     const proteinCell = document.createElement('td');
-                    proteinCell.textContent = `${food.food_protein}g`;
+                    proteinCell.textContent = `${food.food_protein}g<br>`;
                     result3.appendChild(proteinCell);
             
                     const carbCell = document.createElement('td');
-                    carbCell.textContent = `${food.food_carbs}g`;
+                    carbCell.textContent = `${food.food_carbs}g<br>`;
                     result4.appendChild(carbCell);
             
                     const fatCell = document.createElement('td');
-                    fatCell.textContent = `${food.food_fats}g`;
+                    fatCell.textContent = `${food.food_fats}g<br>`;
                     result5.appendChild(fatCell);
             
                     // Sum up the total values
@@ -172,23 +172,23 @@ async function displayFoodsForSelectedDate(selectedDate) {
                 });
 
                 const total = document.createElement('td');
-                total.textContent = "Total";
+                total.textContent = "Total<br>";
                 result1.appendChild(total);
 
                 const tcalorieCell = document.createElement('td');
-                tcalorieCell.textContent = `${totalCalories}Calories`;
+                tcalorieCell.textContent = `${totalCalories}Calories<br>`;
                 result2.appendChild(tcalorieCell);
 
                 const tproteinCell = document.createElement('td');
-                tproteinCell.textContent = `${totalProtein}g`;
+                tproteinCell.textContent = `${totalProtein}g<br>`;
                 result3.appendChild(tproteinCell);
             
                 const tcarbCell = document.createElement('td');
-                tcarbCell.textContent = `${totalCarbs}g`;
+                tcarbCell.textContent = `${totalCarbs}g<br>`;
                 result4.appendChild(tcarbCell);
             
                 const tfatCell = document.createElement('td');
-                tfatCell.textContent = `${totalFats}g`;
+                tfatCell.textContent = `${totalFats}g<br>`;
                 result5.appendChild(tfatCell);
 
             } else{
