@@ -92,7 +92,6 @@ function saveDailyCalories() {
             food_fats: selectedFoodData.fats*modify,
             food_calories: selectedFoodData.calories*modify,
         };
-        console.log(formData)
         // Use $.post to send the form data to the server
         $.post('/students', formData, function (response) {
             if (response) {
@@ -210,7 +209,7 @@ async function deleteDataForSelectedDate() {
         try {
             // Use jQuery to send a DELETE request to the server
             $.ajax({
-                url: 'http://localhost:3000/students/deleteDataByDate/' + selectedDate,
+                url: '/students/deleteDataByDate/' + selectedDate,
                 type: 'DELETE',
                 success: function (data) {
                     // If the server responds with a success status
