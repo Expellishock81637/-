@@ -135,12 +135,13 @@ async function displayFoodsForSelectedDate(selectedDate) {
             
                 foodsForSelectedDate.forEach(food => {
                     let row = `<tr>
-							<td>${food.foodname}</td>
-							<td>${food.food_calories}kcal</td>
-							<td>${food.food_protein}g</td>
-                            <td>${food.food_carbs}g</td>
-                            <td>${food.food_fats}g</td>
-					  </tr>`
+                        <td>${food.foodname}</td>
+                        <td>${parseFloat(food.food_calories).toFixed(2)}kcal</td>
+                        <td>${parseFloat(food.food_protein).toFixed(2)}g</td>
+                        <td>${parseFloat(food.food_carbs).toFixed(2)}g</td>
+                        <td>${parseFloat(food.food_fats).toFixed(2)}g</td>
+                    </tr>`;
+
 			        result.innerHTML += row;
             
                     // Sum up the total values
@@ -152,11 +153,11 @@ async function displayFoodsForSelectedDate(selectedDate) {
 
                 let rrow = `<tr>
                     <td>Total</td>
-                    <td>${totalCalories}kcal</td>
-                    <td>${totalProtein}g</td>
-                    <td>${totalCarbs}g</td>
-                    <td>${totalFats}g</td>
-                </tr>`
+                    <td>${parseFloat(totalCalories).toFixed(2)}kcal</td>
+                    <td>${parseFloat(totalProtein).toFixed(2)}g</td>
+                    <td>${parseFloat(totalCarbs).toFixed(2)}g</td>
+                    <td>${parseFloat(totalFats).toFixed(2)}g</td>
+                </tr>`;
 
                 result.innerHTML += rrow;
 
