@@ -124,7 +124,7 @@ async function displayFoodsForSelectedDate(selectedDate) {
         // Fetch all foods from the server
         $.get('/students', function (allfoods) {
             const foodsForSelectedDate = allfoods.filter(food => food.Date === selectedDate);
-            const result = document.getElementById('search-results');
+            const result = document.getElementById('data-output');
             result.innerHTML = '';
 
             if (foodsForSelectedDate.length > 0) {
@@ -136,10 +136,10 @@ async function displayFoodsForSelectedDate(selectedDate) {
                 foodsForSelectedDate.forEach(food => {
                     let row = `<tr>
 							<td>${food.foodname}</td>
-							<td>${food.food_calories}</td>
-							<td>${food.food_protein}</td>
-                            <td>${food.food_carbs}</td>
-                            <td>${food.food_fats}</td>
+							<td>${food.food_calories}kcal</td>
+							<td>${food.food_protein}g</td>
+                            <td>${food.food_carbs}g</td>
+                            <td>${food.food_fats}g</td>
 					  </tr>`
 			        result.innerHTML += row;
             
@@ -152,10 +152,10 @@ async function displayFoodsForSelectedDate(selectedDate) {
 
                 let rrow = `<tr>
                     <td>Total</td>
-                    <td>${totalCalories}</td>
-                    <td>${totalProtein}</td>
-                    <td>${totalCarbs}</td>
-                    <td>${totalFats}</td>
+                    <td>${totalCalories}kcal</td>
+                    <td>${totalProtein}g</td>
+                    <td>${totalCarbs}g</td>
+                    <td>${totalFats}g</td>
                 </tr>`
 
                 result.innerHTML += rrow;
